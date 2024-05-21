@@ -39,9 +39,11 @@
             label5 = new Label();
             txtConfSenha = new TextBox();
             groupBox1 = new GroupBox();
-            btnInserir = new Button();
-            btnEditar = new Button();
+            label6 = new Label();
+            cmbNivel = new ComboBox();
             btnConsultar = new Button();
+            btnEditar = new Button();
+            btnInserir = new Button();
             dgvUsuarios = new DataGridView();
             clnid = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
@@ -67,21 +69,22 @@
             txtSenha.Location = new Point(111, 119);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(100, 23);
-            txtSenha.TabIndex = 1;
+            txtSenha.TabIndex = 2;
+            txtSenha.UseSystemPasswordChar = true;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(111, 88);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(251, 23);
-            txtEmail.TabIndex = 2;
+            txtEmail.Size = new Size(282, 23);
+            txtEmail.TabIndex = 1;
             // 
             // txtNome
             // 
             txtNome.Location = new Point(111, 59);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(251, 23);
-            txtNome.TabIndex = 3;
+            txtNome.Size = new Size(282, 23);
+            txtNome.TabIndex = 0;
             // 
             // txtID
             // 
@@ -89,7 +92,7 @@
             txtID.Name = "txtID";
             txtID.ReadOnly = true;
             txtID.Size = new Size(71, 23);
-            txtID.TabIndex = 4;
+            txtID.TabIndex = 6;
             // 
             // label2
             // 
@@ -132,10 +135,13 @@
             txtConfSenha.Location = new Point(111, 146);
             txtConfSenha.Name = "txtConfSenha";
             txtConfSenha.Size = new Size(100, 23);
-            txtConfSenha.TabIndex = 9;
+            txtConfSenha.TabIndex = 3;
+            txtConfSenha.UseSystemPasswordChar = true;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(cmbNivel);
             groupBox1.Controls.Add(btnConsultar);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(btnInserir);
@@ -152,37 +158,55 @@
             groupBox1.Location = new Point(77, 75);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(500, 241);
-            groupBox1.TabIndex = 10;
+            groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados de Usuário";
             // 
-            // btnInserir
+            // label6
             // 
-            btnInserir.Location = new Point(41, 189);
-            btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(75, 23);
-            btnInserir.TabIndex = 10;
-            btnInserir.Text = "&Inserir";
-            btnInserir.UseVisualStyleBackColor = true;
-            btnInserir.Click += btnInserir_Click;
+            label6.AutoSize = true;
+            label6.Location = new Point(252, 146);
+            label6.Name = "label6";
+            label6.Size = new Size(34, 15);
+            label6.TabIndex = 14;
+            label6.Text = "Nível";
             // 
-            // btnEditar
+            // cmbNivel
             // 
-            btnEditar.Location = new Point(152, 189);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
-            btnEditar.TabIndex = 11;
-            btnEditar.Text = "&Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            cmbNivel.FormattingEnabled = true;
+            cmbNivel.Items.AddRange(new object[] { "1- Atendente", "2 - Caixa", "3 - Gerente", "4 - Estoquista", "5 - Empacotador" });
+            cmbNivel.Location = new Point(298, 141);
+            cmbNivel.Name = "cmbNivel";
+            cmbNivel.Size = new Size(95, 23);
+            cmbNivel.TabIndex = 4;
             // 
             // btnConsultar
             // 
             btnConsultar.Location = new Point(267, 189);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(75, 23);
-            btnConsultar.TabIndex = 12;
+            btnConsultar.TabIndex = 8;
             btnConsultar.Text = "&Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(152, 189);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 7;
+            btnEditar.Text = "&Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnInserir
+            // 
+            btnInserir.Location = new Point(41, 189);
+            btnInserir.Name = "btnInserir";
+            btnInserir.Size = new Size(75, 23);
+            btnInserir.TabIndex = 5;
+            btnInserir.Text = "&Inserir";
+            btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
             // 
             // dgvUsuarios
             // 
@@ -243,7 +267,7 @@
             txtBusca.Name = "txtBusca";
             txtBusca.PlaceholderText = "Digite pelo menos duas letras para pesquisar usuário";
             txtBusca.Size = new Size(500, 23);
-            txtBusca.TabIndex = 13;
+            txtBusca.TabIndex = 1;
             // 
             // FrmUsuario
             // 
@@ -255,6 +279,7 @@
             Controls.Add(groupBox1);
             Name = "FrmUsuario";
             Text = "FrmUsuario";
+            Load += FrmUsuario_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
@@ -285,5 +310,7 @@
         private DataGridViewTextBoxColumn clnNivel;
         private DataGridViewCheckBoxColumn clnAtivo;
         private TextBox txtBusca;
+        private Label label6;
+        private ComboBox cmbNivel;
     }
 }
