@@ -21,5 +21,10 @@ namespace ComercialSys
             frmUsuario.MdiParent = this;
             frmUsuario.Show();
         }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -60,11 +60,16 @@ namespace ComercialSys
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if(btnConsultar.Text == "&Consultar")
+            if (btnConsultar.Text == "&Consultar")
             {
+                txtSenha.Clear(); // limpa o campo senha
+                txtConfSenha.Clear(); // limpa o campo de confirmação de senha
+                txtEmail.Clear(); // limpa o campo email
+                txtNome.Clear(); // limpa o campo nome
                 txtID.ReadOnly = false;
                 txtID.Focus();
                 btnConsultar.Text = "&Obter por ID";
+                txtSenha.PlaceholderText = string.Empty;
             }
             else
             {
@@ -75,10 +80,33 @@ namespace ComercialSys
                     txtEmail.Text = usuario.Email;
                     txtID.ReadOnly = true;
                     btnConsultar.Text = "&Consultar";
+                    txtSenha.PlaceholderText = "[senha não alterada]";
+                    cmbNivel.SelectedValue = usuario.Nivel.Id;
+                    btnEditar.Enabled = true;
                 }
             }
 
-           
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new(
+                int.Parse(txtID.Text),
+                txtNome.Text,
+                txtEmail.Text,
+                txtSenha.Text,
+                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue)),
+                true);
+            if(usuario.Editar(usuario.Id))
+            {
+                FrmUsuario_Load(sender, e);
+                MessageBox.Show($"o Usuário {usuario.Nome} foi alterado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show($"Falha ao alterar o usuário \"{usuario.Nome}\" !");
+            }
         }
     }
 }

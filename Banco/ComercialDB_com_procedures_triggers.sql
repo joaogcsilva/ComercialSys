@@ -10,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema comercialdb
 -- -----------------------------------------------------
-drop Schema`comercialdb';
+-- drop Schema `comercialdb`;
 -- -----------------------------------------------------
 -- Schema comercialdb
 -- -----------------------------------------------------
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `comercialdb`.`produtos` (
   `imagem` BLOB NULL DEFAULT NULL,
   `data_cad` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `idProduto_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `idProduto_UNIQUE` (`id` ASC),
   UNIQUE INDEX `Produtocol_UNIQUE` (`cod_barras` ASC),
   INDEX `fk_Produto_Categorias1_idx` (`categoria_id` ASC),
   CONSTRAINT `fk_Produto_Categorias1`
@@ -544,12 +544,13 @@ DELIMITER ;
 
 DELIMITER $$
 USE `comercialdb`$$
+-- drop procedure sp_usuario_altera
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_usuario_altera`(
 -- parâmetros da procedure
 spid int, spnome varchar(60), spsenha varchar(32), spnivel int)
 begin
 	update usuarios 
-	set nome = spnome, senha = md5(spsenha), nivel = spnivel where id = spid;
+	set nome = spnome, senha = md5(spsenha), nivel_id = spnivel where id = spid;
 end$$
 
 DELIMITER ;

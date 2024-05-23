@@ -46,15 +46,29 @@ namespace ComClassSys
             cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
             cmd.ExecuteNonQuery();// executar do Mysql (sinal do raiozinho)
         }
-
         public bool Editar(int Id)
-
         {
-            return true;
+            bool resultado = false;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_usuario_altera"; // nome da procedure de alteração de usuario
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                resultado = true;
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+            return resultado;
         }
-
         public static Usuario ObterPorId(int id)
-
         {
             Usuario usuario = new Usuario();
             var cmd = Banco.Abrir();
