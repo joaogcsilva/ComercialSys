@@ -24,7 +24,10 @@ namespace ComercialSys
 
         private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmCategorias frmCategorias = new FrmCategorias();
+            frmCategorias.MdiParent = this;
+            frmCategorias.StartPosition = FormStartPosition.CenterScreen;
+            frmCategorias.Show();
         }
     }
 }
