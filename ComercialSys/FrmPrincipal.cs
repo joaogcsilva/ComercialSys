@@ -29,5 +29,17 @@ namespace ComercialSys
             frmCategorias.StartPosition = FormStartPosition.CenterScreen;
             frmCategorias.Show();
         }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            FrmLogin login = new();
+            //login.MdiParent = this;
+            login.StartPosition = FormStartPosition.CenterScreen;
+            //this.Hide();
+            login.ShowDialog();
+            if(Program.Usuario.Nivel != null)
+            tslUsuario.Text = Program.Usuario.Nome + " - " + Program.Usuario.Nivel.Nome;
+        }
+
     }
 }

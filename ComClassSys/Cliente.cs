@@ -8,5 +8,10 @@ namespace ComClassSys
 {
     public class Cliente
     {
+        public int Id { get; set; }
+        
+        public List<Endereco> Enderecos { get; set; }
+
+
     }
 }
