@@ -242,7 +242,7 @@
             // 
             // btnAdcNovo
             // 
-            btnAdcNovo.Location = new Point(374, 194);
+            btnAdcNovo.Location = new Point(325, 194);
             btnAdcNovo.Name = "btnAdcNovo";
             btnAdcNovo.Size = new Size(161, 23);
             btnAdcNovo.TabIndex = 9;
@@ -269,28 +269,28 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(498, 88);
+            textBox6.Location = new Point(461, 88);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(37, 23);
             textBox6.TabIndex = 6;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(316, 88);
+            textBox5.Location = new Point(296, 88);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(153, 23);
+            textBox5.Size = new Size(127, 23);
             textBox5.TabIndex = 5;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(442, 37);
+            textBox4.Location = new Point(405, 37);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(93, 23);
             textBox4.TabIndex = 4;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(178, 88);
+            textBox3.Location = new Point(158, 88);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(132, 23);
             textBox3.TabIndex = 3;
@@ -299,14 +299,14 @@
             // 
             textBox2.Location = new Point(22, 88);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(150, 23);
+            textBox2.Size = new Size(130, 23);
             textBox2.TabIndex = 2;
             // 
             // textBox1
             // 
             textBox1.Location = new Point(98, 37);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(338, 23);
+            textBox1.Size = new Size(298, 23);
             textBox1.TabIndex = 1;
             // 
             // maskedTextBox1
