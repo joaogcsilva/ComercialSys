@@ -1,6 +1,6 @@
 ﻿namespace ComercialSys
 {
-    partial class FrmCategorias
+    partial class FrmCategoria
     {
         /// <summary>
         /// Required designer variable.
@@ -28,51 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label9 = new Label();
-            txtID = new TextBox();
-            label8 = new Label();
+            label2 = new Label();
+            txtId = new TextBox();
+            label4 = new Label();
             txtSigla = new TextBox();
             txtNome = new TextBox();
-            label4 = new Label();
+            label1 = new Label();
             btnInserir = new Button();
             btnEditar = new Button();
             btnConsultar = new Button();
             groupBox1 = new GroupBox();
-            btnDeletar = new Button();
             txtBusca = new TextBox();
-            dgvCategorias = new DataGridView();
+            dgvUsuarios = new DataGridView();
             clnid = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
             Sigla = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvCategorias).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
-            // label9
+            // label2
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(61, 105);
-            label9.Name = "label9";
-            label9.Size = new Size(40, 15);
-            label9.TabIndex = 5;
-            label9.Text = "Nome";
+            label2.AutoSize = true;
+            label2.Location = new Point(61, 105);
+            label2.Name = "label2";
+            label2.Size = new Size(40, 15);
+            label2.TabIndex = 5;
+            label2.Text = "Nome";
             // 
-            // txtID
+            // txtId
             // 
-            txtID.Location = new Point(107, 70);
-            txtID.Name = "txtID";
-            txtID.ReadOnly = true;
-            txtID.Size = new Size(71, 23);
-            txtID.TabIndex = 6;
+            txtId.Location = new Point(107, 70);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(71, 23);
+            txtId.TabIndex = 6;
             // 
-            // label8
+            // label4
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(69, 136);
-            label8.Name = "label8";
-            label8.Size = new Size(32, 15);
-            label8.TabIndex = 6;
-            label8.Text = "Sigla";
+            label4.AutoSize = true;
+            label4.Location = new Point(69, 136);
+            label4.Name = "label4";
+            label4.Size = new Size(32, 15);
+            label4.TabIndex = 6;
+            label4.Text = "Sigla";
             // 
             // txtSigla
             // 
@@ -87,15 +86,16 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(179, 23);
             txtNome.TabIndex = 1;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
-            // label4
+            // label1
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(83, 73);
-            label4.Name = "label4";
-            label4.Size = new Size(18, 15);
-            label4.TabIndex = 0;
-            label4.Text = "ID";
+            label1.AutoSize = true;
+            label1.Location = new Point(83, 73);
+            label1.Name = "label1";
+            label1.Size = new Size(18, 15);
+            label1.TabIndex = 0;
+            label1.Text = "ID";
             // 
             // btnInserir
             // 
@@ -110,7 +110,7 @@
             // btnEditar
             // 
             btnEditar.Enabled = false;
-            btnEditar.Location = new Point(213, 190);
+            btnEditar.Location = new Point(293, 189);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(66, 23);
             btnEditar.TabIndex = 7;
@@ -120,7 +120,7 @@
             // 
             // btnConsultar
             // 
-            btnConsultar.Location = new Point(141, 190);
+            btnConsultar.Location = new Point(180, 189);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(66, 23);
             btnConsultar.TabIndex = 8;
@@ -130,16 +130,15 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnDeletar);
             groupBox1.Controls.Add(btnConsultar);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(btnInserir);
-            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(txtNome);
             groupBox1.Controls.Add(txtSigla);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(txtID);
-            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(txtId);
+            groupBox1.Controls.Add(label2);
             groupBox1.Location = new Point(30, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(516, 232);
@@ -147,36 +146,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados de Categorias";
             // 
-            // btnDeletar
-            // 
-            btnDeletar.Location = new Point(285, 190);
-            btnDeletar.Name = "btnDeletar";
-            btnDeletar.Size = new Size(66, 22);
-            btnDeletar.TabIndex = 9;
-            btnDeletar.Text = "&Deletar";
-            btnDeletar.UseVisualStyleBackColor = true;
-            btnDeletar.Click += btnDeletar_Click;
-            // 
             // txtBusca
             // 
             txtBusca.Location = new Point(30, 250);
             txtBusca.Name = "txtBusca";
-            txtBusca.PlaceholderText = "Digite pelo menos duas letras para pesquisar categoria";
+            txtBusca.PlaceholderText = "Digite pelo menos duas letras para pesquisar categorias";
             txtBusca.Size = new Size(516, 23);
             txtBusca.TabIndex = 12;
+            txtBusca.TextChanged += txtBusca_TextChanged;
             // 
-            // dgvCategorias
+            // dgvUsuarios
             // 
-            dgvCategorias.AllowUserToAddRows = false;
-            dgvCategorias.AllowUserToDeleteRows = false;
-            dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategorias.Columns.AddRange(new DataGridViewColumn[] { clnid, clnNome, Sigla });
-            dgvCategorias.Location = new Point(30, 279);
-            dgvCategorias.Name = "dgvCategorias";
-            dgvCategorias.ReadOnly = true;
-            dgvCategorias.RowHeadersVisible = false;
-            dgvCategorias.Size = new Size(516, 228);
-            dgvCategorias.TabIndex = 13;
+            dgvUsuarios.AllowUserToAddRows = false;
+            dgvUsuarios.AllowUserToDeleteRows = false;
+            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnid, clnNome, Sigla });
+            dgvUsuarios.Location = new Point(30, 279);
+            dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.ReadOnly = true;
+            dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.Size = new Size(516, 228);
+            dgvUsuarios.TabIndex = 13;
             // 
             // clnid
             // 
@@ -201,38 +191,38 @@
             Sigla.ReadOnly = true;
             Sigla.Width = 250;
             // 
-            // FrmCategorias
+            // FrmCategoria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 519);
             Controls.Add(txtBusca);
-            Controls.Add(dgvCategorias);
+            Controls.Add(dgvUsuarios);
             Controls.Add(groupBox1);
-            Name = "FrmCategorias";
+            Name = "FrmCategoria";
             Text = "FrmCategorias";
+            Load += FrmCategoria_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvCategorias).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label9;
-        private TextBox txtID;
-        private Label label8;
+        private Label label2;
+        private TextBox txtId;
+        private Label label4;
         private TextBox txtSigla;
         private TextBox txtNome;
-        private Label label4;
+        private Label label1;
         private Button btnInserir;
         private Button btnEditar;
         private Button btnConsultar;
         private GroupBox groupBox1;
         private TextBox txtBusca;
-        private DataGridView dgvCategorias;
-        private Button btnDeletar;
+        private DataGridView dgvUsuarios;
         private DataGridViewTextBoxColumn clnid;
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn Sigla;

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,7 +34,7 @@ namespace ComercialSys
 
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
-            // cmbNivel.Items.Clear();
+            //cmbNivel.Items.Clear();
             var niveis = Nivel.ObterLista();
             cmbNivel.DataSource = niveis;
             cmbNivel.DisplayMember = "nome";
@@ -56,6 +57,7 @@ namespace ComercialSys
                 count++;
             }
 
+
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -64,23 +66,24 @@ namespace ComercialSys
             {
                 txtSenha.Clear(); // limpa o campo senha
                 txtConfSenha.Clear(); // limpa o campo de confirmação de senha
-                txtEmail.Clear(); // limpa o campo email
+                txtEmail.Clear(); // limpa o campo email 
                 txtNome.Clear(); // limpa o campo nome
-                txtID.ReadOnly = false;
-                txtID.Focus();
+                txtId.ReadOnly = false;
+                txtId.Focus();
                 btnConsultar.Text = "&Obter por ID";
                 txtSenha.PlaceholderText = string.Empty;
             }
             else
             {
-                if (txtID.Text.Length > 0)
+                if (txtId.Text.Length > 0)
                 {
-                    Usuario usuario = Usuario.ObterPorId(int.Parse(txtID.Text));
+                    Usuario usuario = Usuario.ObterPorId(int.Parse(txtId.Text));
                     txtNome.Text = usuario.Nome;
                     txtEmail.Text = usuario.Email;
-                    txtID.ReadOnly = true;
+                    txtId.ReadOnly = true;
                     btnConsultar.Text = "&Consultar";
                     txtSenha.PlaceholderText = "[senha não alterada]";
+
                     cmbNivel.SelectedValue = usuario.Nivel.Id;
                     btnEditar.Enabled = true;
                 }
@@ -92,7 +95,7 @@ namespace ComercialSys
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new(
-                int.Parse(txtID.Text),
+                int.Parse(txtId.Text),
                 txtNome.Text,
                 txtEmail.Text,
                 txtSenha.Text,
@@ -111,7 +114,7 @@ namespace ComercialSys
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
-            if  (txtBusca.Text.Length > 0)
+            if (txtBusca.Text.Length > 0)
             {
                 var lista = Usuario.ObterLista(txtBusca.Text);
                 dgvUsuarios.Rows.Clear();
@@ -130,9 +133,8 @@ namespace ComercialSys
             }
             else
             {
-                FrmUsuario_Load(sender, e);       
+                FrmUsuario_Load(sender, e);
             }
         }
     }
 }
-

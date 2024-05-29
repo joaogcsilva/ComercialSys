@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Org.BouncyCastle.Crypto.Operators;
+using System.Data;
 namespace ComClassSys
 {
     public class Usuario
@@ -15,8 +16,9 @@ namespace ComClassSys
         public Usuario()
         {
             Id = 0;
+
         }
-        public Usuario(string nome, string email, string? senha, Nivel nivel)
+        public Usuario(string nome, string email, string senha, Nivel nivel)
         {
             Nome = nome;
             Email = email;
@@ -45,8 +47,10 @@ namespace ComClassSys
             cmd.Parameters.AddWithValue("spsenha", Senha);
             cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
             cmd.ExecuteNonQuery();// executar do Mysql (sinal do raiozinho)
+
+
         }
-        public bool Editar(int Id)
+        public bool Editar(int id)
         {
             bool resultado = false;
             var cmd = Banco.Abrir();
@@ -61,11 +65,11 @@ namespace ComClassSys
                 cmd.ExecuteNonQuery();
                 resultado = true;
             }
-
             catch (Exception)
             {
                 throw;
             }
+
             return resultado;
         }
         public static Usuario ObterPorId(int id)
@@ -73,8 +77,8 @@ namespace ComClassSys
             Usuario usuario = new Usuario();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where id = {id}";
-            var dr = cmd.ExecuteReader();// dr = DataReader = retorno da consulta (caso haja) 
+            cmd.CommandText = $"select * from usuarios where id ={id}";
+            var dr = cmd.ExecuteReader();// dr =  DataReader = retorno da consulta (caso haja)
             while (dr.Read())
             {
                 // 1ª forma
@@ -85,7 +89,7 @@ namespace ComClassSys
                     , Nivel.ObterPorId(dr.GetInt32(4))
                     , dr.GetBoolean(5)
                     );
-                // 2ª forma 
+                // 2ª forma
                 //usuario.Id = dr.GetInt32(0);
                 //usuario.Nome = dr.GetString(1);
                 //usuario.Email = dr.GetString(2);
@@ -108,8 +112,6 @@ namespace ComClassSys
             {
                 cmd.CommandText = $"select * from usuarios where nome like '%{nome}%'";
             }
-       
-   
 
             var dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -130,8 +132,8 @@ namespace ComClassSys
             Usuario usuario = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where " +
-                $"email = '{email}' and senha = md5('{senha}') and ativo = 1";
+            cmd.CommandText = $"select * from usuarios " +
+                $"where email = '{email}' and senha = md5('{senha}') and ativo = 1";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -142,6 +144,6 @@ namespace ComClassSys
             }
             return usuario;
         }
-      
-     }
+
+    }
 }

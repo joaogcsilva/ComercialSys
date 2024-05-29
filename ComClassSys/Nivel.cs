@@ -13,7 +13,7 @@ namespace ComClassSys
         public string Nome { get; set; }
         public string Sigla { get; set; }
 
-        // construtores 
+        // construtores
         public Nivel() { }
         public Nivel(string nome, string sigla)
         {
@@ -26,7 +26,7 @@ namespace ComClassSys
             Nome = nome;
             Sigla = sigla;
         }
-        // métodos da classe 
+        // métodos da classe
         public void Inserir()
         {
 
@@ -40,16 +40,16 @@ namespace ComClassSys
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                niveis.Add(new(dr.GetInt32(0),dr.GetString(1), dr.GetString(2)));
+                niveis.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2)));
             }
-            return niveis; 
+            return niveis;
         }
         public static Nivel ObterPorId(int id)
         {
             Nivel nivel = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from niveis where id = {id}";
+            cmd.CommandText = $"select * from niveis where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

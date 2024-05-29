@@ -32,7 +32,7 @@
             txtSenha = new TextBox();
             txtEmail = new TextBox();
             txtNome = new TextBox();
-            txtID = new TextBox();
+            txtId = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -86,13 +86,13 @@
             txtNome.Size = new Size(300, 23);
             txtNome.TabIndex = 0;
             // 
-            // txtID
+            // txtId
             // 
-            txtID.Location = new Point(111, 30);
-            txtID.Name = "txtID";
-            txtID.ReadOnly = true;
-            txtID.Size = new Size(71, 23);
-            txtID.TabIndex = 6;
+            txtId.Location = new Point(111, 30);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(71, 23);
+            txtId.TabIndex = 6;
             // 
             // label2
             // 
@@ -153,7 +153,7 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtNome);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtID);
+            groupBox1.Controls.Add(txtId);
             groupBox1.Controls.Add(label2);
             groupBox1.Location = new Point(77, 75);
             groupBox1.Name = "groupBox1";
@@ -296,7 +296,7 @@
         private TextBox txtSenha;
         private TextBox txtEmail;
         private TextBox txtNome;
-        private TextBox txtID;
+        private TextBox txtId;
         private Label label2;
         private Label label3;
         private Label label4;
