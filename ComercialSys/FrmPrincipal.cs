@@ -41,5 +41,12 @@ namespace ComercialSys
             //tslUsuario.Text = Program.Usuario.Nome + " - " + Program.Usuario.Nivel.Nome;
         }
 
+        private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmProduto frmProduto = new FrmProduto();
+            frmProduto.MdiParent = this;
+            frmProduto.StartPosition = FormStartPosition.CenterScreen;
+            frmProduto.Show();
+        }
     }
 }
