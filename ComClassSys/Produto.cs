@@ -24,7 +24,7 @@ namespace ComClassSys
         {
 
         }
-        public Produto(string codbarras, string descricao, double valorunit, string unidadevenda, int categoriaid, int estoquemin, double classedesc, string imagem)
+        public Produto( string codbarras, string descricao, double valorunit, string unidadevenda, int categoriaid, int estoquemin, double classedesc)
 
         {
             CodBarras = codbarras;
@@ -34,7 +34,20 @@ namespace ComClassSys
             CategoriaId = categoriaid;
             EstoqueMin = estoquemin;
             ClasseDesc = classedesc;
-            Imagem = imagem;
+        }
+
+
+        public Produto(int id, string codbarras, string descricao, double valorunit, string unidadevenda, int categoriaid, int estoquemin, double classedesc)
+
+        {
+            Id = id;
+            CodBarras = codbarras;
+            Descricao = descricao;
+            ValorUnit = valorunit;
+            UnidadeVenda = unidadevenda;
+            CategoriaId = categoriaid;
+            EstoqueMin = estoquemin;
+            ClasseDesc = classedesc;
         }
         public Produto(int id, string codbarras, string descricao, double valorunit, string unidadevenda, int categoriaid, int estoquemin, double classedesc, string imagem, DateTime data)
 
@@ -86,7 +99,7 @@ namespace ComClassSys
             {
                 throw;
             }
-            return true; 
+            return true;
         }
         public static Produto ObterPorId(int id)
         {
@@ -95,7 +108,7 @@ namespace ComClassSys
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from produtos where id = {id}";
             var dr = cmd.ExecuteReader();
-            while (dr.Read()) 
+            while (dr.Read())
             {
                 produto = new(dr.GetInt32(0),
                               dr.GetString(1),
@@ -104,9 +117,7 @@ namespace ComClassSys
                               dr.GetString(4),
                               dr.GetInt32(5),
                               dr.GetInt32(6),
-                              dr.GetDouble(7),
-                              dr.GetString(8),
-                              dr.GetDateTime(9));
+                              dr.GetDouble(7));
             }
 
 
@@ -118,14 +129,36 @@ namespace ComClassSys
             List<Produto> lista = new List<Produto>();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            if (descricao == null) 
+            if (descricao == null)
             {
-
+                cmd.CommandText = "select * from produtos";
+            }
+            else
+            {
+                cmd.CommandText = $"select * from produtos where descricao like '%{descricao}%' order by descricao";
             }
 
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                lista.Add(new Produto(
+                              dr.GetInt32(0),
+                              dr.GetString(1),
+                              dr.GetString(2),
+                              dr.GetDouble(3),
+                              dr.GetString(4),
+                              dr.GetInt32(5),
+                              dr.GetInt32(6),
+                              dr.GetDouble(7)
+
+                    ));
+
+
+            }
             return lista;
         }
     }
 }
 
-   
+
+

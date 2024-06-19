@@ -37,7 +37,7 @@ namespace ComercialSys
             //login.StartPosition = FormStartPosition.CenterScreen;
             //this.Hide();
             //login.ShowDialog();
-            //if(Program.Usuario.Nivel != null)
+    
             //tslUsuario.Text = Program.Usuario.Nome + " - " + Program.Usuario.Nivel.Nome;
         }
 
@@ -47,6 +47,13 @@ namespace ComercialSys
             frmProduto.MdiParent = this;
             frmProduto.StartPosition = FormStartPosition.CenterScreen;
             frmProduto.Show();
+        }
+
+        private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmPedido frmPedido = new();
+            frmPedido.MdiParent = this;
+            frmPedido.Show();
         }
     }
 }

@@ -36,14 +36,12 @@
             txtUniVendas = new TextBox();
             txtEstoqueMin = new TextBox();
             txtClasseDesc = new TextBox();
-            txtImagem = new TextBox();
             label1 = new Label();
             label4 = new Label();
             label5 = new Label();
             label2 = new Label();
             label6 = new Label();
             label7 = new Label();
-            label8 = new Label();
             btnInserir = new Button();
             btnEditar = new Button();
             btnConsultar = new Button();
@@ -51,7 +49,7 @@
             txtID = new TextBox();
             label10 = new Label();
             txtBusca = new TextBox();
-            dgvUsuarios = new DataGridView();
+            dgvProdutos = new DataGridView();
             clnid = new DataGridViewTextBoxColumn();
             clnCodigo = new DataGridViewTextBoxColumn();
             clnCategoria = new DataGridViewTextBoxColumn();
@@ -60,7 +58,7 @@
             clnValor = new DataGridViewTextBoxColumn();
             clnDesconto = new DataGridViewTextBoxColumn();
             clnDescricao = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // txtDescricao
@@ -121,13 +119,6 @@
             txtClasseDesc.Size = new Size(79, 23);
             txtClasseDesc.TabIndex = 10;
             // 
-            // txtImagem
-            // 
-            txtImagem.Location = new Point(263, 200);
-            txtImagem.Name = "txtImagem";
-            txtImagem.Size = new Size(215, 23);
-            txtImagem.TabIndex = 11;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -182,18 +173,9 @@
             label7.TabIndex = 17;
             label7.Text = "Estoque Mínimo";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(206, 203);
-            label8.Name = "label8";
-            label8.Size = new Size(51, 15);
-            label8.TabIndex = 18;
-            label8.Text = "Imagem";
-            // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(198, 249);
+            btnInserir.Location = new Point(186, 216);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(75, 23);
             btnInserir.TabIndex = 19;
@@ -203,16 +185,17 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(314, 249);
+            btnEditar.Location = new Point(302, 216);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 20;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnConsultar
             // 
-            btnConsultar.Location = new Point(431, 249);
+            btnConsultar.Location = new Point(419, 216);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(75, 23);
             btnConsultar.TabIndex = 21;
@@ -252,19 +235,20 @@
             txtBusca.PlaceholderText = "Digite pelo menos duas letras para pesquisar produto";
             txtBusca.Size = new Size(768, 23);
             txtBusca.TabIndex = 27;
+            txtBusca.TextChanged += txtBusca_TextChanged;
             // 
-            // dgvUsuarios
+            // dgvProdutos
             // 
-            dgvUsuarios.AllowUserToAddRows = false;
-            dgvUsuarios.AllowUserToDeleteRows = false;
-            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnid, clnCodigo, clnCategoria, clnEstoque, clnUnidade, clnValor, clnDesconto, clnDescricao });
-            dgvUsuarios.Location = new Point(12, 344);
-            dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.ReadOnly = true;
-            dgvUsuarios.RowHeadersVisible = false;
-            dgvUsuarios.Size = new Size(768, 179);
-            dgvUsuarios.TabIndex = 28;
+            dgvProdutos.AllowUserToAddRows = false;
+            dgvProdutos.AllowUserToDeleteRows = false;
+            dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { clnid, clnCodigo, clnCategoria, clnEstoque, clnUnidade, clnValor, clnDesconto, clnDescricao });
+            dgvProdutos.Location = new Point(12, 344);
+            dgvProdutos.Name = "dgvProdutos";
+            dgvProdutos.ReadOnly = true;
+            dgvProdutos.RowHeadersVisible = false;
+            dgvProdutos.Size = new Size(768, 179);
+            dgvProdutos.TabIndex = 28;
             // 
             // clnid
             // 
@@ -325,7 +309,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 535);
-            Controls.Add(dgvUsuarios);
+            Controls.Add(dgvProdutos);
             Controls.Add(txtBusca);
             Controls.Add(label10);
             Controls.Add(txtID);
@@ -333,14 +317,12 @@
             Controls.Add(btnConsultar);
             Controls.Add(btnEditar);
             Controls.Add(btnInserir);
-            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label2);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label1);
-            Controls.Add(txtImagem);
             Controls.Add(txtClasseDesc);
             Controls.Add(txtEstoqueMin);
             Controls.Add(txtUniVendas);
@@ -351,7 +333,8 @@
             Controls.Add(txtDescricao);
             Name = "FrmProduto";
             Text = "FrmProduto";
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            Load += FrmProduto_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -365,14 +348,12 @@
         private TextBox txtUniVendas;
         private TextBox txtEstoqueMin;
         private TextBox txtClasseDesc;
-        private TextBox txtImagem;
         private Label label1;
         private Label label4;
         private Label label5;
         private Label label2;
         private Label label6;
         private Label label7;
-        private Label label8;
         private Button btnInserir;
         private Button btnEditar;
         private Button btnConsultar;
@@ -380,7 +361,7 @@
         private TextBox txtID;
         private Label label10;
         private TextBox txtBusca;
-        private DataGridView dgvUsuarios;
+        private DataGridView dgvProdutos;
         private DataGridViewTextBoxColumn clnid;
         private DataGridViewTextBoxColumn clnCodigo;
         private DataGridViewTextBoxColumn clnCategoria;
