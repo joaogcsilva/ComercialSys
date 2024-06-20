@@ -59,7 +59,7 @@ namespace ComercialSys
                     Produto produto = Produto.ObterPorId(int.Parse(txtID.Text));
                     txtDescricao.Text = produto.Descricao;
                     txtCodBarras.Text = produto.CodBarras;
-                    txtCategoria.Text = Convert.ToString(produto.ValorUnit);
+                    txtCategoria.Text = Convert.ToString(produto.CategoriaId);
                     txtEstoqueMin.Text = Convert.ToString(produto.EstoqueMin);
                     txtUniVendas.Text = produto.UnidadeVenda;
                     txtValorUnit.Text = Convert.ToString(produto.ValorUnit);

@@ -51,13 +51,13 @@
             txtBusca = new TextBox();
             dgvProdutos = new DataGridView();
             clnid = new DataGridViewTextBoxColumn();
+            clnDescricao = new DataGridViewTextBoxColumn();
             clnCodigo = new DataGridViewTextBoxColumn();
             clnCategoria = new DataGridViewTextBoxColumn();
             clnEstoque = new DataGridViewTextBoxColumn();
             clnUnidade = new DataGridViewTextBoxColumn();
             clnValor = new DataGridViewTextBoxColumn();
             clnDesconto = new DataGridViewTextBoxColumn();
-            clnDescricao = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
@@ -242,7 +242,7 @@
             dgvProdutos.AllowUserToAddRows = false;
             dgvProdutos.AllowUserToDeleteRows = false;
             dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { clnid, clnCodigo, clnCategoria, clnEstoque, clnUnidade, clnValor, clnDesconto, clnDescricao });
+            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { clnid, clnDescricao, clnCodigo, clnCategoria, clnEstoque, clnUnidade, clnValor, clnDesconto });
             dgvProdutos.Location = new Point(12, 344);
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.ReadOnly = true;
@@ -257,37 +257,38 @@
             clnid.Name = "clnid";
             clnid.ReadOnly = true;
             // 
+            // clnDescricao
+            // 
+            clnDescricao.HeaderText = "Descrição";
+            clnDescricao.Name = "clnDescricao";
+            clnDescricao.ReadOnly = true;
+            // 
             // clnCodigo
             // 
-            clnCodigo.Frozen = true;
             clnCodigo.HeaderText = "Codigo";
             clnCodigo.Name = "clnCodigo";
             clnCodigo.ReadOnly = true;
             // 
             // clnCategoria
             // 
-            clnCategoria.Frozen = true;
             clnCategoria.HeaderText = "Categoria";
             clnCategoria.Name = "clnCategoria";
             clnCategoria.ReadOnly = true;
             // 
             // clnEstoque
             // 
-            clnEstoque.Frozen = true;
             clnEstoque.HeaderText = "Estoque";
             clnEstoque.Name = "clnEstoque";
             clnEstoque.ReadOnly = true;
             // 
             // clnUnidade
             // 
-            clnUnidade.Frozen = true;
             clnUnidade.HeaderText = "Unidade";
             clnUnidade.Name = "clnUnidade";
             clnUnidade.ReadOnly = true;
             // 
             // clnValor
             // 
-            clnValor.Frozen = true;
             clnValor.HeaderText = "Valor";
             clnValor.Name = "clnValor";
             clnValor.ReadOnly = true;
@@ -297,12 +298,6 @@
             clnDesconto.HeaderText = "Desconto";
             clnDesconto.Name = "clnDesconto";
             clnDesconto.ReadOnly = true;
-            // 
-            // clnDescricao
-            // 
-            clnDescricao.HeaderText = "Descrição";
-            clnDescricao.Name = "clnDescricao";
-            clnDescricao.ReadOnly = true;
             // 
             // FrmProduto
             // 
@@ -363,12 +358,12 @@
         private TextBox txtBusca;
         private DataGridView dgvProdutos;
         private DataGridViewTextBoxColumn clnid;
+        private DataGridViewTextBoxColumn clnDescricao;
         private DataGridViewTextBoxColumn clnCodigo;
         private DataGridViewTextBoxColumn clnCategoria;
         private DataGridViewTextBoxColumn clnEstoque;
         private DataGridViewTextBoxColumn clnUnidade;
         private DataGridViewTextBoxColumn clnValor;
         private DataGridViewTextBoxColumn clnDesconto;
-        private DataGridViewTextBoxColumn clnDescricao;
     }
 }
