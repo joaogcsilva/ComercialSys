@@ -31,14 +31,26 @@ namespace ComercialSys
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             textBox3.Clear();
-            if(textBox2.Text.Length > 0)
+            if (textBox2.Text.Length > 0)
             {
                 var cliente = Cliente.ObterPorId(int.Parse(textBox2.Text));
-                if (cliente.Id>0) 
+                if (cliente.Id > 0)
                 {
                     textBox3.Text = cliente.Nome;
                 }
             }
+        }
+
+        private void btnAbrirNovo_Click(object sender, EventArgs e)
+        {
+            Pedido pedido = new();
+            pedido.Cliente = Cliente.ObterPorId(int.Parse(textBox2.Text));
+            pedido.Usuario = Program.Usuario;
+            pedido.Status = "A";
+            pedido.Desconto = 0;
+            pedido.Inserir();
+            txtNumeroPedido.Text = pedido.Id.ToString();
+            gbxProduto.Enabled = true;
         }
     }
 }

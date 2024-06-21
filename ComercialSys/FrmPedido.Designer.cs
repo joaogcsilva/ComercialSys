@@ -137,6 +137,7 @@
             btnAbrirNovo.TabIndex = 6;
             btnAbrirNovo.Text = "&Abrir Pedido";
             btnAbrirNovo.UseVisualStyleBackColor = true;
+            btnAbrirNovo.Click += btnAbrirNovo_Click;
             // 
             // gbxProduto
             // 
