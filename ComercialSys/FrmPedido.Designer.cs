@@ -38,13 +38,13 @@
             txtVendedor = new TextBox();
             btnAbrirNovo = new Button();
             gbxProduto = new GroupBox();
-            button3 = new Button();
+            btnInserirItem = new Button();
             label7 = new Label();
-            textBox10 = new TextBox();
-            textBox9 = new TextBox();
+            txtQuantidade = new TextBox();
+            txtValorUnit = new TextBox();
             label6 = new Label();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
+            txtDescricao = new TextBox();
+            txtCodBar = new TextBox();
             label5 = new Label();
             label4 = new Label();
             dataGridView1 = new DataGridView();
@@ -141,13 +141,13 @@
             // 
             // gbxProduto
             // 
-            gbxProduto.Controls.Add(button3);
+            gbxProduto.Controls.Add(btnInserirItem);
             gbxProduto.Controls.Add(label7);
-            gbxProduto.Controls.Add(textBox10);
-            gbxProduto.Controls.Add(textBox9);
+            gbxProduto.Controls.Add(txtQuantidade);
+            gbxProduto.Controls.Add(txtValorUnit);
             gbxProduto.Controls.Add(label6);
-            gbxProduto.Controls.Add(textBox8);
-            gbxProduto.Controls.Add(textBox7);
+            gbxProduto.Controls.Add(txtDescricao);
+            gbxProduto.Controls.Add(txtCodBar);
             gbxProduto.Controls.Add(label5);
             gbxProduto.Controls.Add(label4);
             gbxProduto.Enabled = false;
@@ -158,15 +158,16 @@
             gbxProduto.TabStop = false;
             gbxProduto.Text = "Produto";
             // 
-            // button3
+            // btnInserirItem
             // 
-            button3.Font = new Font("Segoe UI", 12F);
-            button3.Location = new Point(608, 38);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 35);
-            button3.TabIndex = 8;
-            button3.Text = "Inserir";
-            button3.UseVisualStyleBackColor = true;
+            btnInserirItem.Font = new Font("Segoe UI", 12F);
+            btnInserirItem.Location = new Point(608, 38);
+            btnInserirItem.Name = "btnInserirItem";
+            btnInserirItem.Size = new Size(75, 35);
+            btnInserirItem.TabIndex = 8;
+            btnInserirItem.Text = "Inserir";
+            btnInserirItem.UseVisualStyleBackColor = true;
+            btnInserirItem.Click += btnInserirItem_Click;
             // 
             // label7
             // 
@@ -177,19 +178,19 @@
             label7.TabIndex = 7;
             label7.Text = "Quantidade";
             // 
-            // textBox10
+            // txtQuantidade
             // 
-            textBox10.Location = new Point(502, 47);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(100, 23);
-            textBox10.TabIndex = 6;
+            txtQuantidade.Location = new Point(502, 47);
+            txtQuantidade.Name = "txtQuantidade";
+            txtQuantidade.Size = new Size(100, 23);
+            txtQuantidade.TabIndex = 6;
             // 
-            // textBox9
+            // txtValorUnit
             // 
-            textBox9.Location = new Point(396, 47);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(100, 23);
-            textBox9.TabIndex = 5;
+            txtValorUnit.Location = new Point(396, 47);
+            txtValorUnit.Name = "txtValorUnit";
+            txtValorUnit.Size = new Size(100, 23);
+            txtValorUnit.TabIndex = 5;
             // 
             // label6
             // 
@@ -200,19 +201,20 @@
             label6.TabIndex = 4;
             label6.Text = "Valor Unitário";
             // 
-            // textBox8
+            // txtDescricao
             // 
-            textBox8.Location = new Point(109, 47);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(281, 23);
-            textBox8.TabIndex = 3;
+            txtDescricao.Location = new Point(109, 47);
+            txtDescricao.Name = "txtDescricao";
+            txtDescricao.Size = new Size(281, 23);
+            txtDescricao.TabIndex = 3;
             // 
-            // textBox7
+            // txtCodBar
             // 
-            textBox7.Location = new Point(6, 47);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(97, 23);
-            textBox7.TabIndex = 2;
+            txtCodBar.Location = new Point(6, 47);
+            txtCodBar.Name = "txtCodBar";
+            txtCodBar.Size = new Size(97, 23);
+            txtCodBar.TabIndex = 2;
+            txtCodBar.TextChanged += txtCodBar_TextChanged;
             // 
             // label5
             // 
@@ -320,13 +322,13 @@
         private TextBox textBox4;
         private TextBox textBox5;
         private TextBox textBox6;
-        private Button button3;
+        private Button btnInserirItem;
         private Label label7;
-        private TextBox textBox10;
-        private TextBox textBox9;
+        private TextBox txtQuantidade;
+        private TextBox txtValorUnit;
         private Label label6;
-        private TextBox textBox8;
-        private TextBox textBox7;
+        private TextBox txtDescricao;
+        private TextBox txtCodBar;
         private Label label5;
         private Label label4;
     }

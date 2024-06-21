@@ -49,8 +49,8 @@ namespace ComClassSys
             cmd.CommandText = "sp_itempedido_insert";
             cmd.Parameters.AddWithValue("sppedido_id", PedidoId);
             cmd.Parameters.AddWithValue("spproduto_id", Produto.Id);
-            cmd.Parameters.AddWithValue("spquantidade_id", Quantidade);
-            cmd.Parameters.AddWithValue("spdesconto_id", Desconto);
+            cmd.Parameters.AddWithValue("spquantidade", Quantidade);
+            cmd.Parameters.AddWithValue("spdesconto", Desconto);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
 
 

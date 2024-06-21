@@ -51,6 +51,35 @@ namespace ComercialSys
             pedido.Inserir();
             txtNumeroPedido.Text = pedido.Id.ToString();
             gbxProduto.Enabled = true;
+            btnAbrirNovo.Enabled = false;
+        }
+
+        private void txtCodBar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCodBar.Text.Length > 4)
+            {
+                var produto = Produto.ObterPorId(int.Parse(txtCodBar.Text));
+                if (produto.Id > 0)
+                {
+                    txtDescricao.Text = produto.Descricao;
+                    txtValorUnit.Text = produto.ValorUnit.ToString();
+                    txtQuantidade.Text = produto.
+
+                }
+
+            }
+        }
+
+        private void btnInserirItem_Click(object sender, EventArgs e)
+        {
+            ItemPedido itempedido = new(int.Parse(txtNumeroPedido.Text)
+                ,Produto.ObterPorId(int.Parse(txtCodBar.Text))
+                , double.Parse(txtValorUnit.Text)
+                , double.Parse(txtQuantidade.Text)
+                , 0
+                
+            );
+            itempedido.Inserir();
         }
     }
 }
