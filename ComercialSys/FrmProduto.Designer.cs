@@ -177,7 +177,7 @@
             // 
             btnInserir.Location = new Point(186, 216);
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(75, 23);
+            btnInserir.Size = new Size(92, 23);
             btnInserir.TabIndex = 19;
             btnInserir.Text = "&Inserir";
             btnInserir.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             // 
             btnEditar.Location = new Point(302, 216);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
+            btnEditar.Size = new Size(94, 23);
             btnEditar.TabIndex = 20;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -197,7 +197,7 @@
             // 
             btnConsultar.Location = new Point(419, 216);
             btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.Size = new Size(100, 23);
             btnConsultar.TabIndex = 21;
             btnConsultar.Text = "&Consultar";
             btnConsultar.UseVisualStyleBackColor = true;

@@ -32,13 +32,13 @@ namespace ComercialSys
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            //FrmLogin login = new();
+            FrmLogin login = new();
             //login.MdiParent = this;
-            //login.StartPosition = FormStartPosition.CenterScreen;
+            login.StartPosition = FormStartPosition.CenterScreen;
             //this.Hide();
-            //login.ShowDialog();
-    
-            //tslUsuario.Text = Program.Usuario.Nome + " - " + Program.Usuario.Nivel.Nome;
+            login.ShowDialog();
+
+            tslUsuario.Text = Program.Usuario.Nome + " - " + Program.Usuario.Nivel.Nome;
         }
 
         private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
