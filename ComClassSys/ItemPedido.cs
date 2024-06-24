@@ -40,6 +40,13 @@ namespace ComClassSys
             Quantidade = quantidade;
             Desconto = desconto;
         }
+        public ItemPedido(int pedidoId, Produto produto, double quantidade, double desconto)
+        {
+            PedidoId = pedidoId;
+            Produto = produto;
+            Quantidade = quantidade;
+            Desconto = desconto;
+        }
         // métodos Manter Itens de pedido
         // Inserir Item
         public void Inserir()

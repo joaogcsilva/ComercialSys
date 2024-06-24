@@ -63,8 +63,6 @@ namespace ComercialSys
                 {
                     txtDescricao.Text = produto.Descricao;
                     txtValorUnit.Text = produto.ValorUnit.ToString();
-                    txtQuantidade.Text = produto.
-
                 }
 
             }
@@ -72,9 +70,9 @@ namespace ComercialSys
 
         private void btnInserirItem_Click(object sender, EventArgs e)
         {
-            ItemPedido itempedido = new(int.Parse(txtNumeroPedido.Text)
+            ItemPedido itempedido = new(
+                int.Parse(txtNumeroPedido.Text)
                 ,Produto.ObterPorId(int.Parse(txtCodBar.Text))
-                , double.Parse(txtValorUnit.Text)
                 , double.Parse(txtQuantidade.Text)
                 , 0
                 
