@@ -51,6 +51,13 @@
             label5 = new Label();
             label4 = new Label();
             dgvItens = new DataGridView();
+            btn = new Button();
+            txtOutros = new TextBox();
+            txtDesconto = new TextBox();
+            txtTotal = new TextBox();
+            txtSubTotal = new TextBox();
+            label9 = new Label();
+            btnExcluirItem = new Button();
             clnSeq = new DataGridViewTextBoxColumn();
             clnCodBar = new DataGridViewTextBoxColumn();
             clnDescricao = new DataGridViewTextBoxColumn();
@@ -59,12 +66,7 @@
             clnQuantidade = new DataGridViewTextBoxColumn();
             clnDesconto = new DataGridViewTextBoxColumn();
             clnValorItem = new DataGridViewTextBoxColumn();
-            btn = new Button();
-            txtOutros = new TextBox();
-            txtDesconto = new TextBox();
-            txtTotal = new TextBox();
-            txtSubTotal = new TextBox();
-            label9 = new Label();
+            clnId = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             gbxProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItens).BeginInit();
@@ -286,7 +288,7 @@
             // 
             dgvItens.AllowUserToAddRows = false;
             dgvItens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvItens.Columns.AddRange(new DataGridViewColumn[] { clnSeq, clnCodBar, clnDescricao, clnUnidadeVenda, clnValorUnit, clnQuantidade, clnDesconto, clnValorItem });
+            dgvItens.Columns.AddRange(new DataGridViewColumn[] { clnSeq, clnCodBar, clnDescricao, clnUnidadeVenda, clnValorUnit, clnQuantidade, clnDesconto, clnValorItem, clnId });
             dgvItens.Location = new Point(35, 333);
             dgvItens.Name = "dgvItens";
             dgvItens.ReadOnly = true;
@@ -295,6 +297,65 @@
             dgvItens.Size = new Size(740, 245);
             dgvItens.TabIndex = 8;
             dgvItens.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btn
+            // 
+            btn.Font = new Font("Segoe UI", 14F);
+            btn.Location = new Point(798, 531);
+            btn.Name = "btn";
+            btn.Size = new Size(157, 47);
+            btn.TabIndex = 9;
+            btn.Text = "Finalizar Pedido";
+            btn.UseVisualStyleBackColor = true;
+            // 
+            // txtOutros
+            // 
+            txtOutros.Location = new Point(844, 437);
+            txtOutros.Name = "txtOutros";
+            txtOutros.Size = new Size(111, 23);
+            txtOutros.TabIndex = 10;
+            // 
+            // txtDesconto
+            // 
+            txtDesconto.Location = new Point(844, 408);
+            txtDesconto.Name = "txtDesconto";
+            txtDesconto.Size = new Size(111, 23);
+            txtDesconto.TabIndex = 11;
+            // 
+            // txtTotal
+            // 
+            txtTotal.Font = new Font("Segoe UI", 18F);
+            txtTotal.Location = new Point(798, 466);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(157, 39);
+            txtTotal.TabIndex = 12;
+            // 
+            // txtSubTotal
+            // 
+            txtSubTotal.Font = new Font("Segoe UI", 18F);
+            txtSubTotal.Location = new Point(798, 333);
+            txtSubTotal.Name = "txtSubTotal";
+            txtSubTotal.Size = new Size(157, 39);
+            txtSubTotal.TabIndex = 13;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(798, 315);
+            label9.Name = "label9";
+            label9.Size = new Size(55, 15);
+            label9.TabIndex = 14;
+            label9.Text = "Sub Total";
+            // 
+            // btnExcluirItem
+            // 
+            btnExcluirItem.Location = new Point(676, 584);
+            btnExcluirItem.Name = "btnExcluirItem";
+            btnExcluirItem.Size = new Size(99, 38);
+            btnExcluirItem.TabIndex = 15;
+            btnExcluirItem.Text = "Excluir Item";
+            btnExcluirItem.UseVisualStyleBackColor = true;
+            btnExcluirItem.Click += btnExcluirItem_Click;
             // 
             // clnSeq
             // 
@@ -358,60 +419,20 @@
             clnValorItem.Name = "clnValorItem";
             clnValorItem.ReadOnly = true;
             // 
-            // btn
+            // clnId
             // 
-            btn.Font = new Font("Segoe UI", 14F);
-            btn.Location = new Point(798, 531);
-            btn.Name = "btn";
-            btn.Size = new Size(157, 47);
-            btn.TabIndex = 9;
-            btn.Text = "Finalizar Pedido";
-            btn.UseVisualStyleBackColor = true;
-            // 
-            // txtOutros
-            // 
-            txtOutros.Location = new Point(844, 437);
-            txtOutros.Name = "txtOutros";
-            txtOutros.Size = new Size(111, 23);
-            txtOutros.TabIndex = 10;
-            // 
-            // txtDesconto
-            // 
-            txtDesconto.Location = new Point(844, 408);
-            txtDesconto.Name = "txtDesconto";
-            txtDesconto.Size = new Size(111, 23);
-            txtDesconto.TabIndex = 11;
-            // 
-            // txtTotal
-            // 
-            txtTotal.Font = new Font("Segoe UI", 18F);
-            txtTotal.Location = new Point(798, 466);
-            txtTotal.Name = "txtTotal";
-            txtTotal.Size = new Size(157, 39);
-            txtTotal.TabIndex = 12;
-            // 
-            // txtSubTotal
-            // 
-            txtSubTotal.Font = new Font("Segoe UI", 18F);
-            txtSubTotal.Location = new Point(798, 333);
-            txtSubTotal.Name = "txtSubTotal";
-            txtSubTotal.Size = new Size(157, 39);
-            txtSubTotal.TabIndex = 13;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(798, 315);
-            label9.Name = "label9";
-            label9.Size = new Size(55, 15);
-            label9.TabIndex = 14;
-            label9.Text = "Sub Total";
+            clnId.Frozen = true;
+            clnId.HeaderText = "Id";
+            clnId.Name = "clnId";
+            clnId.ReadOnly = true;
+            clnId.Visible = false;
             // 
             // FrmPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1157, 607);
+            ClientSize = new Size(1157, 655);
+            Controls.Add(btnExcluirItem);
             Controls.Add(label9);
             Controls.Add(txtSubTotal);
             Controls.Add(txtTotal);
@@ -466,6 +487,11 @@
         private Label label5;
         private Label label4;
         private TextBox txtSubTotal;
+        private Label label8;
+        private TextBox txtDescontoItem;
+        private Label label9;
+        private Label lblDescMax;
+        private Button btnExcluirItem;
         private DataGridViewTextBoxColumn clnSeq;
         private DataGridViewTextBoxColumn clnCodBar;
         private DataGridViewTextBoxColumn clnDescricao;
@@ -474,9 +500,6 @@
         private DataGridViewTextBoxColumn clnQuantidade;
         private DataGridViewTextBoxColumn clnDesconto;
         private DataGridViewTextBoxColumn clnValorItem;
-        private Label label8;
-        private TextBox txtDescontoItem;
-        private Label label9;
-        private Label lblDescMax;
+        private DataGridViewTextBoxColumn clnId;
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,16 +72,29 @@ namespace ComercialSys
 
         private void btnInserirItem_Click(object sender, EventArgs e)
         {
-            ItemPedido itempedido = new(
+            ItemPedido itemPedido = new(
                 int.Parse(txtNumeroPedido.Text)
                 , Produto.ObterPorId(int.Parse(txtCodBar.Text))
+                , double.Parse(txtValorUnit.Text)
                 , double.Parse(txtQuantidade.Text)
                 , double.Parse(txtDescontoItem.Text)
-
             );
-            itempedido.Inserir();
+            itemPedido.Inserir();
+            // limpa controles
+            txtCodBar.Clear();
+            txtDesconto.Text = "0";
+            txtDescricao.Clear();
+            txtQuantidade.Text = "1";
+            txtValorUnit.Clear();
+            txtCodBar.Focus();
 
-            // limpar o datagrid
+            // limpar e carrega o datagrid
+            CarregaGrid();
+
+
+        }
+        private void CarregaGrid()
+        {
             dgvItens.Rows.Clear();
             var items = ItemPedido.ObterListaPorPedido(int.Parse(txtNumeroPedido.Text));
             int cont = 0;
@@ -88,17 +102,17 @@ namespace ComercialSys
             foreach (var item in items)
             {
                 dgvItens.Rows.Add();
-                dgvItens.Rows[cont].Cells[0].Value = $"#{cont + 1}"; // seq
+                dgvItens.Rows[cont].Cells[0].Value = $"#{cont + 1}";  // seq
                 dgvItens.Rows[cont].Cells[1].Value = item.Produto.CodBarras; // codbar
                 dgvItens.Rows[cont].Cells[2].Value = item.Produto.Descricao; // descrição
                 dgvItens.Rows[cont].Cells[3].Value = item.Produto.UnidadeVenda; // unidade de venda
-                dgvItens.Rows[cont].Cells[4].Value = item.ValorUnit; // valor unitário
+                dgvItens.Rows[cont].Cells[4].Value = item.ValorUnit; // valor unit
                 dgvItens.Rows[cont].Cells[5].Value = item.Quantidade; // quantidade
                 dgvItens.Rows[cont].Cells[6].Value = item.Desconto; // desconto
                 dgvItens.Rows[cont].Cells[7].Value = item.ValorUnit * item.Quantidade - item.Desconto; // valor item
+                dgvItens.Rows[cont].Cells[8].Value = item.Id;
                 subTotal += item.ValorUnit * item.Quantidade - item.Desconto;
                 cont++;
-
             }
             txtSubTotal.Text = subTotal.ToString();
 
@@ -108,7 +122,36 @@ namespace ComercialSys
         {
             if (txtQuantidade.Text.Length > 0)
             {
-                lblDescMax.Text = $"R$ {produto.ClasseDesc * produto.ValorUnit * double.Parse(txtQuantidade.Text)}"; 
+                lblDescMax.Text = $"R$ {produto.ClasseDesc * produto.ValorUnit * double.Parse(txtQuantidade.Text)}";
+            }
+        }
+
+        private void dgvItens_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (dgvItens.Rows.Count > 0)
+            {
+                MessageBox.Show("Vamos remover a linha: " + e.RowIndex);
+            }
+
+        }
+
+        private void btnExcluirItem_Click(object sender, EventArgs e)
+        {
+            if (dgvItens.Rows.Count > 0)
+            {
+                int linha = dgvItens.CurrentRow.Index;
+                string seq = dgvItens.Rows[linha].Cells[0].Value.ToString();
+                var confirma = MessageBox.Show($"Deseja confirmar a exclusão do Item {seq}?"
+                    , "Excluir Item",
+                    MessageBoxButtons.YesNo
+                    , MessageBoxIcon.Warning
+                    , MessageBoxDefaultButton.Button2
+                    );
+                if (confirma == DialogResult.Yes)
+                {
+                    ItemPedido.Remover(Convert.ToInt32(dgvItens.Rows[linha].Cells[8].Value));
+                    CarregaGrid();
+                }
             }
         }
     }
